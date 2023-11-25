@@ -1,0 +1,801 @@
+
+
+---
+layout: talk-controls
+title: "The Utility-Fairness Trade-Offs in Learning Fair Representations"
+event: "Wayne State University (CSE Graduate Seminar)"
+author: Vishnu Boddeti
+theme: vishnu
+---
+
+<!-- Color ramp: ["#559EB1", "#6DB28B", "#8CBB68", "#AFBD4F", "#CFB541", "#E39B39", "#E56E30"] -->
+
+<section data-background-iframe="../../../assets/viz/gradient/">
+    <p class="title">{{ page.title }}</p>
+    <br>
+    <p class="subtitle"> {{ page.event }} </p>
+    <center>Slides: hal.cse.msu.edu/talks</center>
+    <center>
+        <i class="fab fa-twitter"></i><a href="https://twitter.com/VishnuBoddeti">VishnuBoddeti</a>
+    </center>
+    <!-- <p class="author"> {{ page.author }} </p> -->
+    <br>
+</section>
+
+<section>
+    <h2>Progress In Machine Learning</h2>
+        <div id="left" style="width:50%">
+            <blockquote>Speech Processing</blockquote>
+            <blockquote>Image Analysis</blockquote>
+        </div>
+        <div id="left" style="width:50%">
+            <blockquote>Natural Language Processing</blockquote>
+            <blockquote>Physical Sciences</blockquote>
+        </div>
+        <div id="left" style="width:100%">
+            <br><br><br>
+            <center><span style="color:#ff8080"><u>Key Drivers</u></span></center>
+            <center><span style="font-size:200%">Data, Compute, Algorithms</span></center>
+        </div>
+    </section>
+
+<section data-background="#511EA8">
+    <h2>State-of-Affairs</h2>
+    (report from the real-world)
+</section>
+
+<section>
+    <center style="font-size:150%"><a href="https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing" target="_blank">"Machine Bias"</a></center>
+    <br>
+    <div id="left" style="width:50%">
+        <img src="../../../assets/images/talks/frl/logo-propublica.png" width="40%">
+    </div>
+    <div id="right" style="width:50%">
+        May 23, 2016
+    </div>
+    <div id="left" style="width:100%">
+        <img src="../../../assets/images/talks/frl/receividism.webp" width="80%">
+    </div>
+</section>
+
+<section>
+    <center style="font-size:130%"><a href="https://www.nytimes.com/2018/02/09/technology/facial-recognition-race-artificial-intelligence.html" target="_blank">"Facial recognition is accurate, if you're a white guy"</a></center>
+    <br>
+    <div id="left" style="width:50%">
+        <img src="../../../assets/images/talks/logo-nytimes.png" width="40%">
+    </div>
+    <div id="right" style="width:50%">
+        Feb. 09, 2018
+    </div>
+    <div id="left" style="width:60%">
+        <img src="../../../assets/images/talks/gender-shades-light.png" width="100%">
+        <img src="../../../assets/images/talks/gender-shades-dark.png" width="100%">
+    </div>
+    <div id="right" style="width:40%">
+        <br><br>
+        <center><span style="color:cyan">lighter faces: 0.7% error</span></center>
+        <br><br>
+        <center><span style="color:#ff8080">darker faces: 12.9% error</span></center>
+    </div>
+    <div id="left" style="width:100%">
+        <ul style="font-size:50%"><li>Boulamwini and Gebru, "Gender Shades:Intersectional Accuracy Disparities in Commercial Gender Classification," FAT 2018</li></ul>
+    </div>
+</section>
+
+<section data-background-iframe="https://www.wired.com/story/student-exam-software-bias-proctorio/" data-background-interactive>
+</section>
+
+<section>
+    <center style="font-size:150%"><a href="https://www.nytimes.com/2023/07/04/arts/design/black-artists-bias-ai.html" target="_blank">"Black Artists Say A.I. Shows Bias"</a></center>
+    <br>
+    <div id="left" style="width:50%">
+        <img src="../../../assets/images/talks/logo-nytimes.png" width="40%">
+    </div>
+    <div id="right" style="width:50%">
+        July 04, 2023
+    </div>
+    <div id="left" style="width:100%">
+        <img src="../../../assets/images/talks/frl/black-artists-bias-ai.webp" width="70%">
+    </div>
+</section>
+
+<section>
+    <center style="font-size:150%"><a href="https://restofworld.org/2023/ai-image-stereotypes" target="_blank">"How AI reduces the world to stereotypes"</a></center>
+    <div id="left" style="width:50%">
+        <img src="../../../assets/images/talks/frl/logo-rest-of-the-world.svg" width="20%">
+    </div>
+    <div id="right" style="width:50%">
+        <br>
+        October 10, 2023
+    </div>
+    <div id="left" style="width:100%">
+        <img src="../../../assets/images/talks/frl/generative-ai-stererotypes.jpg" width="80%">
+    </div>
+</section>
+
+<section data-background="white">
+    <center style="font-size:150%"><a href="https://www.nature.com/articles/s41746-023-00939-z" target="_blank">"LLMs propagate race-based medicine"</a></center>
+    <div id="left" style="width:50%">
+        <img src="../../../assets/images/talks/frl/logo-nature-journal.svg" width="40%">
+    </div>
+    <div id="right" style="width:50%">
+        <br>
+        <center style="color:black;">October 20, 2023</center>
+    </div>
+    <div id="left" style="width:100%">
+        <img src="../../../assets/images/talks/frl/llm-racist-medicine.png" width="50%">
+    </div>
+</section>
+  
+<section>
+    <center><span style="font-size:120%">Real world machine learning systems are effective but,</span></center>
+    <br><br>
+    <center><span style="color:#ff8080;font-size:150%">are biased</span>,</center>
+    <br><br>
+    <center><span style="color:#ff8080;font-size:150%">violate user’s privacy</span> and </center>
+    <br><br>
+    <center><span style="color:#ff8080;font-size:150%">not trustworthy</span>.</center>
+</section>
+
+<section >
+    <h2>Today's Agenda</h2>
+    <br><br>
+    <center><span style="font-size:120%"><blockquote>Build ML systems that are <u>fair while retaining utility</u>.</blockquote></span></center>
+</section>
+
+<section>
+<section data-background="#511EA8">
+    <h2>Trade-Offs in Fair Machine Learning</h2>
+</section>
+
+<section>
+    <h2>Questions of Interest</h2>
+    <ul>
+        <ul>
+            <br><br>
+            <li class="fragment"><span style="color:#ff8080">What</span> are the trade-offs between fairness and utility?</li>
+            <br><br>
+            <li class="fragment"><span style="color:greenyellow">When</span> do the trade-offs between fairness and utility exist?</li>
+            <br><br>
+            <li class="fragment"><span style="color:cyan">How</span> to explicitly characterize the utility-fairness trade-offs?</li>
+        </ul>
+    </ul>
+</section>
+
+<section>
+    <center><span style="font-size:250%">The <span style="color:#ff8080">What</span></span></center>
+    <br><br><br>
+    <span class="fragment"><center>Short Answer: <span style="color:yellow">Data and Label Space Trade-Offs</span></center></span>
+</section>
+
+<section>
+    <h2  class="r-fit-text">What are the Trade-Offs in Fair Machine Learning?</h2>
+    <div id="left" style="width:50%">
+        <div class="r-stack">
+            <img src="../../../assets/images/talks/frl/trade-offs-1.svg" width="100%">
+            <img class="fragment" data-fragment-index="1" src="../../../assets/images/talks/frl/trade-offs-2.svg" width="100%">
+            <img class="fragment" data-fragment-index="2" src="../../../assets/images/talks/frl/trade-offs-3.svg" width="100%">
+            <img class="fragment" data-fragment-index="3" src="../../../assets/images/talks/frl/trade-offs-4.svg" width="100%">
+            <img class="fragment" data-fragment-index="4" src="../../../assets/images/talks/frl/trade-offs-5.svg" width="100%">
+            <img class="fragment" data-fragment-index="5" src="../../../assets/images/talks/frl/trade-offs-6.svg" width="100%">
+            <img class="fragment" data-fragment-index="6" src="../../../assets/images/talks/frl/trade-offs-7.svg" width="100%">
+        </div>
+    </div>
+    <div id="right" style="width:50%">
+        <center class="fragment" data-fragment-index="3">
+            <br>
+            <div class="box" style="width:100%">
+                <div class="red-box-header" style="font-size:100%;">Data Space Trade-Off</div>
+                <div class="box-content" style="font-size:50%; color: greenyellow">
+                    $$
+                    \begin{equation}
+                    \inf_{f\in \mathcal H_X} \left\{(1-\lambda)\underbrace{\inf_{g_Y\in \mathcal H_Y }\mathbb E_{X,Y} \left[\mathcal L_Y\left (g_Y(f(X), Y \right)\right]}_{Loss} + \lambda \underbrace{Dep(f(X),S|Y=y)}_{Unfairness} \right\}\nonumber
+                    \end{equation}
+                    $$
+                </div>
+            </div>
+        </center>
+        <center class="fragment" data-fragment-index="4">
+            <br><br>
+            <div class="box" style="width:90%">
+                <div class="red-box-header" style="font-size:100%;">Label Space Trade-Off</div>
+                <div class="box-content" style="font-size:50%; color: #FCFB9C">
+                    $$
+                    \begin{equation}
+                    \inf_{Z\in \mathcal{L}^2} \left\{(1-\lambda)\underbrace{\inf_{g_Y\in \mathcal H_Y }\mathbb E_{Y} \left[\mathcal L_Y\left (g_Y\left(Z\right), Y \right)\right]}_{Loss} + \lambda \underbrace{Dep(Z,S|Y=y)}_{Unfairness} \right\}\nonumber
+                    \end{equation}
+                    $$
+                </div>
+            </div>
+        </center>
+    </div>
+    <div id="left" style="width:100%;">
+        <ul style="font-size:50%;">
+            <li>Sadeghi, Dehdashtian, <u>Boddeti</u>, "On Characterizing the Trade-off in Invariant Representation Learning," TMLR 2022</li>
+            <li>Dehdashtian, Sadeghi, <u>Boddeti</u>, "The Utility-Fairness Trade-offs in Learning Fair Representations," (Under Review)</li>
+        </ul>
+    </div>
+</section>
+
+<section data-background="white">
+    <h2 style="color:black;">Fairness: The Multi-Headed Hydra</h2>
+    <div id="left" style="width:60%;">
+        <img src="../../../assets/images/talks/frl/fairness-definitions.png" width="80%">
+    </div>
+    <div id="right" style="width:40%;"> 
+        <br><br><br><br>
+        <ul style="color:black;"><li>Verma and Rubin, "Fairness Definitions Explained," International Workshop on Software Fairness, 2018</li></ul>
+    </div>
+</section>
+
+<section data-background="white">
+    <h2 style="color:black" class="r-fit-text">Fairness Definitions: Statistical Parity</h2>
+    <div id="left" style="width:50%;">
+        <img src="../../../assets/images/talks/frl/statistical-parity.jpeg" width="100%">
+    </div>
+    <div id="right" style="width:50%;">
+        <br><br><br><br>
+        <ul style="color:black;font-size:75%">
+            <li style="font-size:75%;">$P(\hat{Y}=1|S=1) = P(\hat{Y}=1|S=0)$</li>
+            <br>
+            <li style="color:white;"><blockquote>Probability of correct prediction is the same across demographic groups.</blockquote></li>
+            <br>
+            <li>$\hat{Y} \perp \!\!\! \perp S$</li>
+        </ul>
+    </div>
+</section>
+
+<section data-background="white">
+    <h2 style="color:black" class="r-fit-text">Fairness Definitions: Equalized Odds</h2>
+    <div id="left" style="width:50%;">
+        <img src="../../../assets/images/talks/frl/statistical-parity.jpeg" width="100%">
+    </div>
+    <div id="right" style="width:50%;">
+        <br><br><br><br>
+        <ul style="color:black;font-size:75%">
+            <li style="font-size:75%;">$P(\hat{Y}=y|Y=y, S=1) = P(\hat{Y}=y|Y=y, S=0)$</li>
+            <br>
+            <li style="color:white;"><blockquote>True positive rate of predictions is the same across demographic groups.</blockquote></li>
+            <br>
+            <li>$\hat{Y} \perp \!\!\! \perp S | Y$</li>
+        </ul>
+    </div>
+</section>
+
+<section data-background="white">
+    <h2 style="color:black" class="r-fit-text">Fairness Definitions: Equality of Opportunity</h2>
+    <div id="left" style="width:50%;">
+        <img src="../../../assets/images/talks/frl/statistical-parity.jpeg" width="100%">
+    </div>
+    <div id="right" style="width:50%;">
+        <br><br><br><br>
+        <ul style="color:black;font-size:75%">
+            <li style="font-size:75%;">$P(\hat{Y}=1|Y=1, S=1) = P(\hat{Y}=1|Y=1, S=0)$</li>
+            <br>
+            <li style="color:white;"><blockquote>Among eligible candidates, probability of correct prediction is the same across demographic groups.</blockquote></li>
+            <br>
+            <li>$\hat{Y} \perp \!\!\! \perp S | Y=1$</li>
+        </ul>
+    </div>
+</section>
+
+<section>
+    <center><span style="font-size:250%">The <span style="color:greenyellow">When</span></span></center>
+    <br><br><br>
+    <span class="fragment"><center>Short Answer: <span style="color:yellow">Target and demographic attributes are related.</span></center></span>
+</section>
+
+<section>
+    <h2>A Causal Perspective</h2>
+    <div id="left" style="width:50%;">
+        <figure class="fragment">
+            <img src="../../../assets/images/talks/frl/causal-graph-1.svg" width="80%">
+            <center>$Y$ is related to $S \Rightarrow$ trade-off exists.</center>
+        </figure>
+    </div>
+    <div id="right" style="width:50%;">
+        <figure class="fragment">
+            <img src="../../../assets/images/talks/frl/causal-graph-2.svg" width="80%">
+            <center>$Y$ is independent of $S \Rightarrow$ no trade-off should exist.</center>
+        </figure>
+    </div>
+</section>
+
+<section>
+    <h2>A Subspace Geometry Perspective</h2>
+    <div id="left" style="width:50%">
+        <ul style="font-size:75%"><li>Case 1: when $\mathcal{S} \perp \!\!\! \perp \mathcal{T}$ (Gender, Age)</li></ul>
+        <div class="r-stack">
+            <img class="fragment" data-fragment-index="0" src="../../../assets/images/talks/arl-geometric-perspective-1-1.svg" width="42%">
+            <img class="fragment" data-fragment-index="1" src="../../../assets/images/talks/arl-geometric-perspective-1-2.svg" width="42%">
+        </div>
+    </div>
+    <div id="left" style="width:50%">
+        <ul style="font-size:75%"><li class="fragment" data-fragment-index="8">Case 3: when $\mathcal{S} \sim \mathcal{T}$ ($\mathcal{T}\subseteq\mathcal{S}$)</li></ul>
+        <div class="r-stack">
+            <img class="fragment" data-fragment-index="9" src="../../../assets/images/talks/arl-geometric-perspective-3-1.svg" width="42%">
+        </div>
+    </div>
+    <div id="left" style="width:100%">
+        <ul style="font-size:75%"><li class="fragment" data-fragment-index="2">Case 2: when $\mathcal{S} \not\perp \!\!\! \perp \mathcal{T}$ (High Cheekbones, Gender)</li></ul>
+    </div>
+    <div id="left" style="width:30%">
+        <div class="r-stack">
+            <img class="fragment" data-fragment-index="3" src="../../../assets/images/talks/arl-geometric-perspective-2-1-1.svg" width="70%">
+            <img class="fragment" data-fragment-index="4"  src="../../../assets/images/talks/arl-geometric-perspective-2-1-2.svg" width="70%">
+        </div>
+    </div>
+    <div id="left" style="width:30%">
+        <div class="r-stack">
+            <img class="fragment" data-fragment-index="5" src="../../../assets/images/talks/arl-geometric-perspective-2-2-1.svg" width="70%">
+            <img class="fragment" data-fragment-index="6" src="../../../assets/images/talks/arl-geometric-perspective-2-2-2.svg" width="70%">
+        </div>
+    </div>
+    <div id="left" style="width:29%">
+        <img class="fragment" data-fragment-index="7" src="../../../assets/images/talks/arl-geometric-perspective-2-3-1.svg" width="70%">
+    </div>
+    <div id="left" style="width:100%">
+        <ul style="font-size:50%"><li>B. Sadeghi, L. Wang, V.N. Boddeti, ‘‘Adversarial Representation Learning with Closed-Form Solutions," CVPRW 2020</li></ul>
+    </div>
+</section>
+
+<section>
+    <center><span style="font-size:250%">The <span style="color:cyan">How</span></span></center>
+    <br><br><br>
+    <span class="fragment"><center>Short Answer: <span style="color:yellow">It depends</span></center></span>
+</section>
+
+<section>
+    <h2 class="r-fit-text">From Fair Learning to Fair Representation Learning</h2>
+    <img src="../../../assets/images/talks/frl/representation-learning.svg" width="100%">
+    <center><blockquote>$Z \perp \!\!\! \perp S \Rightarrow \hat{Y} \perp \!\!\! \perp S$</blockquote></center>
+</section>
+
+<section>
+    <h2>Learning Fair Representations</h2>
+    <ul style="font-size:75%">
+    <li><span style="color:cyan">Target Attribute: Smile</span> & <span style="color:#ff8080">Demographic Attribute: Gender</span></li>
+    <center>
+        <div class="r-stack">
+            <img src="../../../assets/images/talks/representation-learning-semantic-control-1.svg" width="65%">
+            <img class="fragment current-visible" data-fragment-index="0" src="../../../assets/images/talks/representation-learning-semantic-control-2.svg" width="65%">
+            <img class="fragment current-visible" data-fragment-index="1" src="../../../assets/images/talks/representation-learning-semantic-control-3.svg" width="65%">
+        </div>
+    </center>
+    <li class="fragment">Problem Definition:</li>
+        <ul>
+            <li class="fragment">Learn a representation $\mathbf{z} \in \mathbb{R}^d$ from data $\mathbf{x}$</li>
+            <li class="fragment"><span style="color:cyan">Retain</span> information necessary to predict <span style="color:cyan">target</span> attribute <span style="color:cyan">$\mathbf{t}\in\mathcal{T}$</span></li>
+            <li class="fragment"><span style="color:#ff8080">Remove</span> information related to a desired <span style="color:#ff8080">demographic</span> attribute <span style="color:#ff8080">$\mathbf{s}\in\mathcal{S}$</span></li>
+        </ul>
+    </ul>
+</section>
+</section>
+
+<section>
+    <h2>A Fork in the Road</h2>
+    <br><br>
+    <ul>
+      <li><u><em>Design</em></u> metric to measure sensitive demographic attribute information</li>
+      <ul>
+          <li class="fragment" data-fragment-index="2"><span style="color:#ff8080">non-parameteric statistical dependence measures, this talk</span></li>
+      </ul>
+      <br><br>
+      <li class="fragment" data-fragment-index="0"><u><em>Learn</em></u> metric to measure semantic attribute information</li>
+      <ul>
+          <li class="fragment" data-fragment-index="1"><span style="color:cyan">probably feasible, many prior attempts</span></li>
+      </ul>
+    </ul>
+</section>
+
+<section>
+    <span style="font-size:200%">Prior Work: Adversarial Representation Learning</span>
+</section>
+
+<section>
+  <h2>Game Theoretic Formulation</h2>
+  <div class="r-stack">
+    <img class="fragment" data-fragment-index="0" src="../../../assets/images/talks/adversarial-representation-learning-1.svg" width="60%">
+    <img class="fragment" data-fragment-index="1" src="../../../assets/images/talks/adversarial-representation-learning-2.svg" width="60%">
+    <img class="fragment" data-fragment-index="2" src="../../../assets/images/talks/adversarial-representation-learning-3.svg" width="60%">
+  </div>
+  <ul style="font-size:75%">
+      <li>Three player game between:</li>
+      <ul>
+          <li class="fragment" data-fragment-index="0"><span style="color:yellow">Encoder</span> extracts features $\mathbf{z}$</li>
+          <li class="fragment" data-fragment-index="1"><span style="color:cyan">Target Predictor</span> for desired task from features $\mathbf{z}$</li>
+          <li class="fragment" data-fragment-index="2"><span style="color:#ff8080">Adversary</span> extracts sensitive information from features $\mathbf{z}$</li>
+      </ul>
+      <span class="fragment" data-fragment-index="3">
+        $$
+        \begin{equation}
+            \begin{aligned}
+                \min_{\mathbf{\Theta}_E,\mathbf{\Theta}_T} & \underbrace{\color{cyan}{J_t(\mathbf{\Theta}_E,\mathbf{\Theta}_T)}}_{\color{cyan}{\text{error of target}}} \quad s.t. \text{  } \min_{\mathbf{\Theta}_A} \underbrace{\color{orange}{J_s(\mathbf{\Theta}_E,\mathbf{\Theta}_A)}}_{\color{orange}{\text{error of adversary}}} \geq \alpha \nonumber
+            \end{aligned}
+        \end{equation}
+        $$
+      </span>
+      <li class="fragment" data-fragment-index="4"><span style="color:#ff8080">Adversary:</span> learned measure of semantic attribute information</li>
+  </ul>
+</section>
+
+<section>
+    <h2 class="r-fit-text">How do we learn model parameters?</h2>
+    <div class="r-stack">
+        <img src="../../../assets/images/talks/adversarial-representation-learning-sgda-1.svg" width="60%">
+        <img class="fragment" data-fragment-index="0" src="../../../assets/images/talks/adversarial-representation-learning-sgda-2.svg" width="60%">
+        <img class="fragment" data-fragment-index="1" src="../../../assets/images/talks/adversarial-representation-learning-sgda-3.svg" width="60%">
+        <img class="fragment" data-fragment-index="2" src="../../../assets/images/talks/adversarial-representation-learning-sgda-4.svg" width="60%">
+    </div>
+    <ul>
+        <li>Simultaneous/Alternating Stochastic Gradient Descent</li>
+        <ul>
+            <li class="fragment" data-fragment-index="0">Update <u>target</u> while keeping encoder and adversary frozen.</li>
+            <li class="fragment" data-fragment-index="1">Update <u>adversary</u> while keeping encoder and target frozen.</li>
+            <li class="fragment" data-fragment-index="2">Update <u>encoder</u> while keeping target and adversary frozen.</li>
+        </ul>
+    </ul>
+</section>
+
+<section>
+    <h2>ARL is Suboptimal</h2>
+    <br><br><br>
+    <blockquote>Unstable Optimization</blockquote>
+    <br><br><br><br>
+    <blockquote>Lack of Invariance Guarantees</blockquote>
+</section>
+
+<section>
+    <h2>Overview of our Solutions</h2>
+    <div class="r-stack">
+        <img class="fragment" data-fragment-index="0" src="../../../assets/images/talks/frl/method-overview-1.svg" width="60%">
+        <img class="fragment" data-fragment-index="1" src="../../../assets/images/talks/frl/method-overview-2.svg" width="60%">
+        <img class="fragment" data-fragment-index="2" src="../../../assets/images/talks/frl/method-overview-3.svg" width="60%">
+        <img class="fragment" data-fragment-index="3" src="../../../assets/images/talks/frl/method-overview-4.svg" width="60%">
+        <img class="fragment" data-fragment-index="4" src="../../../assets/images/talks/frl/method-overview-5.svg" width="60%">
+        <img class="fragment" data-fragment-index="5" src="../../../assets/images/talks/frl/method-overview-6.svg" width="60%">
+    </div>
+    <ul>
+        <ul style="font-size:60%;">
+            <li class="fragment" data-fragment-index="0">Standard Adversarial Representation Learning</li>
+            <li class="fragment" data-fragment-index="1">Linear Adversarial Measure: linear dependency between $Z$ and $S$ [ICCV 2019, CVPRW 2020]</li>
+            <li class="fragment" data-fragment-index="3">Non-Linear Adversarial Measure: Beyond linear dependency between $Z$ and $S$, but not all types [ECML 2021]</li>
+            <li class="fragment" data-fragment-index="4">Universal Dependence Measure: All types of dependency between $Z$ and $S$ [TMLR 2022]</li>
+            <li class="fragment" data-fragment-index="5">End-to-End Universal Dependence Measure: All types of dependency between $Z$ and $S$ [Under Review]</li>
+        </ul>
+    </ul>
+</section>
+
+<section>
+    <h2 class="r-fit-text">Covariance Operator and Dependence Measure</h2>
+    <img src="../../../assets/images/talks/frl/covariance-operator.svg" width="70%">
+    <blockquote style="font-size:75%;" class="fragment"><p class="fragment">Linear Dependence: $\displaystyle C_{SZ}\approx\displaystyle \frac{1}{n}{\color{Maroon}\tilde{\bm S}} \tilde{\bm Z}^T$</p> <p class="fragment">Universal Dependence: $\displaystyle \Sigma_{SZ}\approx\frac{1}{n}{\color{Maroon}\tilde{\bm K}_S} \tilde{\bm K}_Z$</p> </blockquote>
+    <blockquote style="font-size:75%;"><p class="fragment">$\mathcal H_Z\times\mathcal H_S\rightarrow \mathbb R:\ Cov\left(\alpha(Z),\ \beta({\color{Maroon}S})\right)$ </p><p class="fragment">$=\big\langle \beta, \Sigma_{SZ}\, \alpha \big\rangle_{\mathcal H_S}, \Sigma_{SZ}:\mathcal H_Z\rightarrow \mathcal H_S$</p></blockquote>
+    <blockquote style="font-size:75%;" class="fragment">$Z \perp \!\!\! \perp {\color{Maroon}S} \Leftrightarrow \Sigma_{SZ} =0 \Leftrightarrow \left\|\Sigma_{SZ}\right\| =0$,
+        where $\|\cdot\|$ can be any operator norm</blockquote>
+    <blockquote style="font-size:75%;" class="fragment">HSIC$(Z,S)=\left\|\Sigma_{SZ}\right\|^2_{\text{HS}}=\displaystyle\sum_{\alpha\in\mathcal U_Z}\sum_{\beta\in \mathcal H_S}Cov^2(\alpha(Z),\beta(S))$</blockquote>
+</section>
+
+<section>
+    <h2>Universal Dependence Measure</h2>
+    <img src="../../../assets/images/talks/frl/method-overview-5.svg" width="60%">
+    <blockquote style="font-size:70%;" class="fragment">$\mathcal A_r:=\Big\{(f_1,\cdots,f_r)\,|\,Cov(f_i(X), f_j(X))+\gamma \langle  f_i, f_j\rangle_{\mathcal H_X}=\delta_{i,j} \Big\}$</blockquote>
+    <blockquote style="font-size:70%;" class="fragment">$\displaystyle\sup_{\bm f\in\mathcal A_r} {\Big\{J(\bm f):=\color{ForestGreen}(1-\lambda)\,\text{Dep}(Z, Y)}{\color{Maroon}-\lambda\,\text{Dep}(Z, S) }\Big\}$</blockquote>
+    <blockquote style="font-size:70%;" class="fragment">Solution: eigenfunctions corresponding to the $r$ largest eigenvalues of $\big({\color{ForestGreen}(1-\lambda)\, \Sigma_{YX}^*\,\Sigma_{YX}}{\color{Maroon}-\lambda\,\Sigma_{SX}^*\Sigma_{SX} }\big)\bm f = \tau (\Sigma_{XX}+\gamma I)\bm f$</blockquote>
+    <ul style="font-size:50%;"><li>Sadeghi, Dehdashtian, <u>Boddeti</u>, "On Characterizing the Trade-off in Invariant Representation Learning," TMLR 2022</li></ul>
+</section>
+
+<section data-background="white">
+    <h2 style="color:black;" class="r-fit-text">End-to-End Dependence Universal Measure</h2>
+    <img src="../../../assets/images/talks/frl/end-to-end-universal-invariance-1.png" width="70%">
+    <ul style="color:black;"><li class="fragment">Learning through alternating optimization</li></ul>
+    <img class="fragment" src="../../../assets/images/talks/frl/end-to-end-universal-invariance-2.png" width="70%">
+    <ul style="font-size:50%;color:black"><li>Dehdashtian, Sadeghi, <u>Boddeti</u>, "The Utility-Fairness Trade-offs in Learning Fair Representations," (Under Review)</li></ul>
+</section>
+
+<section data-background="#511EA8">
+    <h2 class="r-fit-text">Estimating Trade-Offs on Real Datasets</h2>
+</section>
+
+<section>
+    <h2>Face Image Dataset</h2>
+    <img src="../../../assets/images/talks/frl/celeba-teaser.png" width="80%">
+    <ul style="font-size:50%;"><li>Liu, Luo, Wang and Tang "Deep Learning Face Attributes in the Wild," ICCV 2015</li></ul>
+</section>
+
+<section data-background="white">
+    <h2 style="color:black;">CelebA Faces</h2>
+    <center><ul style="color:black;font-size:75%"><li>$Y$: high cheekbones (binary) and $S$: age and sex (continuous + binary)</li></ul></center>
+    <div id="left" style="width:50%;">
+        <div class="r-stack">
+            <img src="../../../assets/images/talks/frl/celeba-dpv-line-1.svg" width="100%">
+            <img class="fragment" data-fragment-index="0" src="../../../assets/images/talks/frl/celeba-dpv-line-2.svg" width="100%">
+            <img class="fragment" data-fragment-index="1" src="../../../assets/images/talks/frl/celeba-dpv-line-3.svg" width="100%">
+            <img class="fragment" data-fragment-index="2" src="../../../assets/images/talks/frl/celeba-dpv-line-4.svg" width="100%">
+            <img class="fragment" data-fragment-index="3" src="../../../assets/images/talks/frl/celeba-dpv-line-5.svg" width="100%">
+        </div>
+    </div>
+    <div id="right" style="width:50%;">
+        <div class="r-stack">
+            <img src="../../../assets/images/talks/frl/celeba-eo-line-1.svg" width="100%">
+            <img class="fragment" data-fragment-index="0" src="../../../assets/images/talks/frl/celeba-eo-line-2.svg" width="100%">
+            <img class="fragment" data-fragment-index="1" src="../../../assets/images/talks/frl/celeba-eo-line-3.svg" width="100%">
+            <img class="fragment" data-fragment-index="2" src="../../../assets/images/talks/frl/celeba-eo-line-4.svg" width="100%">
+            <img class="fragment" data-fragment-index="3" src="../../../assets/images/talks/frl/celeba-eo-line-5.svg" width="100%">
+        </div>
+    </div>
+    <div id="left" style="width:100%;">
+        <ul style="font-size:50%;color:black">
+            <li>Sadeghi, Dehdashtian, <u>Boddeti</u>, "On Characterizing the Trade-off in Invariant Representation Learning," TMLR 2022</li>
+            <li>Dehdashtian, Sadeghi, <u>Boddeti</u>, "The Utility-Fairness Trade-offs in Learning Fair Representations," (Under Review)</li>
+        </ul>
+    </div>
+</section>
+
+<section data-background-iframe="https://haeggee.github.io/posts/folktables" data-background-interactive>
+</section>
+
+<section data-background="white">
+    <h2 style="color:black">Folktables</h2>
+    <center><ul style="color:black;"><li>$Y$: employement status (binary) and $S$: age (continuous)</li></ul></center>
+    <div id="left" style="width:50%;">
+        <div class="r-stack">
+            <img src="../../../assets/images/talks/frl/folk-dpv-line-1.svg" width="100%">
+            <img class="fragment" data-fragment-index="0" src="../../../assets/images/talks/frl/folk-dpv-line-2.svg" width="100%">
+            <img class="fragment" data-fragment-index="1" src="../../../assets/images/talks/frl/folk-dpv-line-3.svg" width="100%">
+            <img class="fragment" data-fragment-index="2" src="../../../assets/images/talks/frl/folk-dpv-line-4.svg" width="100%">
+        </div>
+    </div>
+    <div id="right" style="width:50%;">
+        <div class="r-stack">
+            <img src="../../../assets/images/talks/frl/folk-eo-line-1.svg" width="100%">
+            <img class="fragment" data-fragment-index="0" src="../../../assets/images/talks/frl/folk-eo-line-2.svg" width="100%">
+            <img class="fragment" data-fragment-index="1" src="../../../assets/images/talks/frl/folk-eo-line-3.svg" width="100%">
+            <img class="fragment" data-fragment-index="2" src="../../../assets/images/talks/frl/folk-eo-line-4.svg" width="100%">
+        </div>
+    </div>
+    <div id="left" style="width:100%;">
+        <ul style="font-size:50%;color:black">
+            <li>Sadeghi, Dehdashtian, <u>Boddeti</u>, "On Characterizing the Trade-off in Invariant Representation Learning," TMLR 2022</li>
+            <li>Dehdashtian, Sadeghi, <u>Boddeti</u>, "The Utility-Fairness Trade-offs in Learning Fair Representations," (Under Review)</li>
+        </ul>
+    </div>
+</section>
+
+<section>
+<section data-background="#511EA8">
+    <h2>Other Aspects of Fairness in AI</h2>
+</section>
+
+<section data-background="white">
+    <h2 style="color:black">How about zero-shot models?</h2>
+    <div id="left" style="width:50%;">
+        <img src="../../../assets/images/talks/frl/zero-shot-prediction.svg" width="100%">
+    </div>
+    <div id="left" style="width:50%;">
+        <img src="../../../assets/images/talks/frl/zero-shot-prediction-leaderboard.svg" width="100%">
+    </div>
+</section>
+
+<section>
+    <h2>Fairness of Zero-Shot Predictions</h2>
+    <div id="left" style="width:40%;">
+        <br>
+        <center>
+        <ul>
+            <li>$Y$: high cheekbones (binary)</li>
+            <li>$S$: sex (binary)</li>
+        </ul>
+        </center>
+    </div>
+    <div id="right" style="width:60%;">
+        <div id="left" style="width:60%;">
+        <img src="../../../assets/images/talks/frl/high-cheekbones-female.jpeg" width="90%">
+        </div>
+        <div id="right" style="width:30%;">
+        <img src="../../../assets/images/talks/frl/high-cheekbones-male.jpeg" width="90%">
+        </div>
+    </div>
+    <div id="left" style="width:100%;">
+    <center><div id="fairvlm_celeba_1" style="width:100%;"></div></center>
+    <script>
+        var d3colors = Plotly.d3.scale.category10();
+        var xlabels = [5.8, 19, 11, 4.2, 4.1, 1.0, 0.02]
+        var yValues = [50.5, 84.8, 85.3, 83.2, 83.6, 84.2, 83.4]
+        var trace = {
+            type: 'scatter',
+            mode: 'markers',
+            x: xlabels,
+            y: yValues,
+            text: ['CLIP', 'ERM Linear Probe', 'ERM Adapter', 'DFR (subsample)', 'DFR (upsample)', 'Contrastive Adapter', 'FairVLM (Ours)'],
+            textfont: {color: ['cyan', 'white', 'white', 'white', 'white', 'white', 'red']},
+            marker: {
+                color: ['cyan', 'white', 'white', 'white', 'white', 'white', 'indianred'],
+                size: 20,
+            },
+        };
+        var data = [ trace ];
+        var config = {responsive: true, displaylogo: false};
+        var layout = {
+            font: {size: 12, color: "#FFFFFF"},
+            plot_bgcolor:"#333333",
+            paper_bgcolor:"#333333",
+            yaxis: {color: "white", showline: true, mirror: true, autorange: true, title: 'Zero-Shot Accuracy (%)'},
+            xaxis: {color: "white", showline: true, mirror: true, title: 'Equal Opportunity Difference (%)'},
+        }
+        Plotly.newPlot('fairvlm_celeba_1', data, layout, config );
+    </script>
+    </div>
+    <ul style="font-size:50%;"><li>Dehdashtian, Wang, <u>Boddeti</u>, "FairVLM: Mitigating Bias in Pre-Trained Vision-Language Models," Under Review</li></ul>
+</section>
+
+<section>
+    <h2>FairFace</h2>
+    <img src="../../../assets/images/talks/frl/fairface-examples.png" width="60%">
+    <center><div id="fairface_maxskew" style="width:100%;"></div></center>
+    <script>
+        var d3colors = Plotly.d3.scale.category10();
+        var xlabels = ['CLIP', 'Orth-Proj', 'Orth-Cali', 'FairVLM (Ours)']
+        var yValues = [0.743, 0.755, 0.638, 0.408]
+        var trace = {
+            type: 'bar',
+            x: xlabels,
+            y: yValues,
+            text: yValues.map(String),
+            textfont: {color: ['black', 'white', 'white', 'white']},
+            textposition: 'auto',
+            marker: {
+                color: ['rgba(204,204,204,1)', '#337ab7', '#337ab7', 'indianred']
+            },
+        };
+        var data = [ trace ];
+        var config = {responsive: true, displaylogo: false};
+        var layout = {
+            title: 'Fairness w.r.t Race',
+            font: {size: 12, color: "#FFFFFF"},
+            plot_bgcolor:"#333333",
+            paper_bgcolor:"#333333",
+            yaxis: {color: "white", showline: true, mirror: true, autorange: true, title: 'MaxSkew@1000 (lower is better)'},
+            xaxis: {color: "white", showline: true, mirror: true},
+        }
+        Plotly.newPlot('fairface_maxskew', data, layout, config );
+    </script>
+    <ul style="font-size:50%;"><li>Dehdashtian, Wang, <u>Boddeti</u>, "FairVLM: Mitigating Bias in Pre-Trained Vision-Language Models," Under Review</li></ul>
+</section>
+
+<section>
+    <h2>Chicago Face Dataset</h2>
+    <div id="left" style="width:40%;">
+        <center>
+        <ul>
+            <li>$Y$: attractiveness (binary)</li>
+            <li>$S$: gender (binary)</li>
+        </ul>
+        </center>
+    </div>
+    <div id="right" style="width:60%;">
+        <img src="../../../assets/images/talks/frl/chicago-face-dataset-examples.png" width="100%">
+    </div>
+    <div id="left" style="width:100%;">
+    <center><div id="chicago_group_fairness" style="width:100%;"></div></center>
+    <script>
+        var xlabels = ['CLIP', 'ERM Adapter', 'Contrastive Adapter', 'FairVLM (Ours)']
+        var trace1 = {
+            type: 'bar',
+            x: xlabels,
+            y: [0.0, 0.0, 9.3, 41.4],
+            marker: {
+                line: {
+                    width: 1.5
+                }
+            },
+            name: 'Worst Group'
+        };
+        var trace2 = {
+            type: 'bar',
+            x: xlabels,
+            y: [55, 46.2, 63, 63.2],
+            marker: {                    
+                line: {
+                    width: 1.5
+                }
+            },
+            name: 'Average'
+        };
+        var data = [ trace1, trace2 ];
+        var config = {responsive: true, displaylogo: false};
+        var layout = {
+            title: 'Zero-Shot Prediction Accuracy ',
+            font: {size: 12, color: "#FFFFFF"},
+            plot_bgcolor:"#333333",
+            paper_bgcolor:"#333333",
+            yaxis: {color: "white", showline: true, mirror: true},
+            xaxis: {color: "white", showline: true, mirror: true},
+            showlegend: true,
+            legend: {                    
+                xanchor: 'right',
+                yanchor: 'top',
+                x: 0.16,
+                y: 0.999
+            }
+        };
+        Plotly.newPlot('chicago_group_fairness', data, layout, config );
+    </script>
+    </div>
+    <ul style="font-size:50%;"><li>Dehdashtian, Wang, <u>Boddeti</u>, "FairVLM: Mitigating Bias in Pre-Trained Vision-Language Models," Under Review</li></ul>
+</section>
+
+<section data-background="white">
+    <h2 style="color:black;">How about Data?</h2>
+    <div id="left" style="width:40%;"><img src="../../../assets/images/talks/frl/openai-clip-wit.png" width="100%"></div>
+    <div id="left" style="width:25%;"><img src="../../../assets/images/talks/frl/laion.png" width="100%"></div>
+    <div id="left" style="width:33%;"><br><img src="../../../assets/images/talks/frl/datacomp.png" width="100%"></div>
+    <div id="left" style="width:100%;"><img src="../../../assets/images/talks/frl/zero-shot-performance.png" width="100%"></div>
+    <ul style="font-size:50%;color:black"><li>DataComp: In search of the next generation of multimodal datasets, NeurIPS D&B 2023</li></ul>
+</section>
+
+<section data-background-iframe="https://laion.ai/projects/" data-background-interactive>
+</section>
+
+<section data-background="white">
+    <h2 class="r-fit-text" style="color:black;">Troubling Trends in Dataset Scaling</h2>
+    <img src="../../../assets/images/talks/frl/scale_n_excess.png" width="100%">
+    <blockquote>Scale exacerbates hate content.</blockquote>
+    <ul style="font-size:50%;color:black">
+        <li>Birhane, Prabhu, Han and <u>Boddeti</u>, "On Hate Scaling Laws For Data-Swamps," arXiv:2306.13141</li>
+        <li>Birhane, Prabhu, Han, <u>Boddeti</u>, Luccioni, "Into the LAION's Den: Investigating Hate in Multimodal Datasets," NeurIPS D&B Track 2023</li>
+    </ul>
+</section>
+
+<section data-background="white">
+    <h2 class="r-fit-text" style="color:black;">Troubling Trends in Dataset Scaling</h2>
+    <img src="../../../assets/images/talks/frl/scale_cfd_softmax_heatmap.png" width="100%">
+    <blockquote>Scale exacerbates stereotypes.</blockquote>
+    <ul style="font-size:50%;color:black">
+        <li>Birhane, Prabhu, Han and <u>Boddeti</u>, "On Hate Scaling Laws For Data-Swamps," arXiv:2306.13141</li>
+        <li>Birhane, Prabhu, Han, <u>Boddeti</u>, Luccioni, "Into the LAION's Den: Investigating Hate in Multimodal Datasets," NeurIPS D&B Track 2023</li>
+    </ul>
+</section>
+</section>
+
+<section>
+<section data-background="#511EA8">
+    <h2>Concluding Remarks</h2>
+</section>
+
+<section>
+    <h2>Summary</h2>
+    <ul>
+    <ul>
+        <li class="fragment">Next generation of machine learning systems have to be designed with fairness constraints.</li>
+        <br>
+        <li class="fragment">Identified two trade-offs between utility and fairness.</li>
+        <br>
+        <li class="fragment">Proposed algorithms to characterize the utility-fairness trade-off.</li>
+        <br>
+        <li class="fragment">Appreciable gap exists between current solutions and ideal trade-off.</li>
+    </ul>
+    </ul>
+</section>
+
+<section data-background="white">
+    <h2 style="color:black;">Thank You</h2>
+    <div id="left" style="width:50%;">
+        <img src="../../../assets/images/talks/frl/trade-off.svg" width="90%">
+    </div>
+    <div id="left" style="width:50%;">
+        <br>
+        <img src="../../../assets/images/talks/frl/celeba-dpv-line-5.svg" width="100%">
+    </div>
+    <div id="left" style="width:100%;">
+    <center>
+        <a href="http://hal.cse.msu.edu/">Human Analysis Lab</a>
+    </center>
+    <center>
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/VishnuBoddeti">VishnuBoddeti</a>
+    </center>
+    </div>
+</section>
+</section>
+
+
