@@ -17,7 +17,8 @@
 		<div class="reveal">
 			<div class="slides">
 				<section data-auto-animate>
-					<h3>Seminar 24: CSE 842</h3>
+					<h3>CSE 842: Natural Language Processing</h3>
+					<h4>Seminar 24</h4>
                     Sepehr Dehdashtian
 				  </section>
                   
@@ -39,7 +40,7 @@
                 </section>
                 
                 <!-- ------------------- Slide ------------------- -->
-                <section data-auto-animate>
+                <section data-transition="none">
                     <h3> Contrastive Learning </h3>
                     <aside class="notes">
                          For example, here we want to match these pictures of animals with their names.
@@ -251,6 +252,85 @@
                         <li class="fragment"> <span style="color:#ff8080">Transformer-based</span> with causal attention mask as text encoder</li>
                     </ul>
                     
+                </section>
+
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <h3> Zero-Shot Transfer Capabilities</h3>
+                    <aside class="notes">
+                        In this section, we look at zero-shot transfer capabilities of CLIP in more details.
+                    </aside>
+                </section>
+
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <h3> Zero-Shot Transfer Capabilities</h3>
+                    <aside class="notes">
+                        Here they compare performance of CLIP and a fully supervised on 26 different datasets.
+                        <br>
+                        As we can see, for some general tasks like classifying foods, hate detection, car recognition, zero-shot CLIP has better performance than the supervised model.
+                        <br>
+                        But, for domain-specific tasks such as medical imaging, or self driving, or satelite image recognition, zero-shot CLIP is much worse than the supervised model.
+                    </aside>
+                    <img src="assets/images/clip/zsVSsup.png" width="70%">
+                </section>
+
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <h3> Zero-Shot CLIP vs Few-Shot Linear Probes</h3>
+                    <aside class="notes">
+                        Here they compare performance of zero-shot CLIP and some few-shot linear probes.
+                    </aside>
+                </section>
+
+
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <h3> Zero-Shot CLIP vs Few-Shot Linear Probes</h3>
+                    <aside class="notes">
+                        Here we can see that Zero-Shot CLIP outperforms 1, 2, 4, 8, and 16-shot of other methods and can match the performance of 4-shot CLIP Linear Prob.
+                    </aside>
+                    <img src="assets/images/clip/few-shot.png" width="70%">
+                </section>
+
+
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <h3> Prompt Engineering</h3>
+                    <aside class="notes">
+                        They tried prompt engineering to improve the performance of zero-shot CLIP models.
+                    </aside>
+                </section>
+
+
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <h3> Prompt Engineering</h3>
+                    <aside class="notes">
+                        They found out that providing a more detailed sentence as the text prompt can increase the performance of zero-shot CLIP. For example, instead of using "a cat" as prompt, they used "This is a black and white photo of a cat"
+                    </aside>
+                    <img src="assets/images/clip/prompt-eng.png" width="70%">
+                </section>
+
+
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <h3> Robustness to Distribution Shift</h3>
+                    <aside class="notes">
+                        To show the robustness of Zero-Shot CLIP to natural distribution shift, they compared performance of CLIP and more than 200 models on imagenet and 7 imagenet-like datasets. 
+                    </aside>
+                </section>
+
+
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <h3> Robustness to Distribution Shift</h3>
+                    <aside class="notes">
+                         Here x-axis is the accuracy on ImageNet and the Y-axis is the average accuracy on those 7 imagenet-Like datasets. Ideally, these two numbers are the same which will be the dashed line.
+                         <br>
+                         They show that Zero-Shot CLIP model is much more closer to the ideal robust model. Zero-Shot CLIP is even closer than existing robustness techniques to the ideal robust model.
+                    </aside>
+                    <img src="assets/images/clip/dist-shift.png" width="70%">
                 </section>
 
 			</div>
