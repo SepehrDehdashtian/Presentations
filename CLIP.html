@@ -66,7 +66,7 @@
                          <br>
                          CLIP has two encoders, one for each modality.
                     </aside>
-                    <img src="assets/images/clip/clip-1.png" width="70%">
+                    <img data-id="img" src="assets/images/clip/clip-1.png" width="70%">
                 </section>
 
                 <!-- ------------------- Slide ------------------- -->
@@ -84,7 +84,7 @@
                     <aside class="notes">
                          image encoder, encodes the images into image fearture vectors. (next slide)
                     </aside>
-                    <img src="assets/images/clip/clip-3.png" width="70%">
+                    <img data-id="img" src="assets/images/clip/clip-3.png" width="70%">
                 </section>
 
                 <!-- ------------------- Slide ------------------- -->
@@ -95,7 +95,7 @@
                          <br>
                          In contrastive pre-training we want the diagonal elements to have high values and the off-diagonal elements have small values.
                     </aside>
-                    <img src="assets/images/clip/clip-4.png" width="70%">
+                    <img data-id="img" src="assets/images/clip/clip-4.png" width="70%">
                 </section>
 
                 <!-- ------------------- Slide ------------------- -->
@@ -106,7 +106,7 @@
                          <br>
                          for example, for updating image encoder, they pass this row to a softmax classifier where the second class is the correct class. (next slide)
                     </aside>
-                    <img src="assets/images/clip/clip-5.png" width="70%">
+                    <img data-id="img" src="assets/images/clip/clip-5.png" width="70%">
                 </section>
 
                 <!-- ------------------- Slide ------------------- -->
@@ -117,7 +117,7 @@
                          <br>
                          At the end of training, CLIP will have two encoders that map image and text samples to a shared feature space. (next slide)
                     </aside>
-                    <img src="assets/images/clip/clip-6.png" width="70%">
+                    <img data-id="img" src="assets/images/clip/clip-6.png" width="70%">
                 </section>
 
 
@@ -137,7 +137,7 @@
                     <aside class="notes">
                          Assume that we have a set of class labels, and we want to classify some images into these classes (next slide)
                     </aside>
-                    <img src="assets/images/clip/zs-1.png" width="70%">
+                    <img data-id="img" src="assets/images/clip/zs-1.png" width="70%">
                 </section>
 
 
@@ -147,7 +147,7 @@
                     <aside class="notes">
                          We first use a template to construct a sentence for each label (next image)
                     </aside>
-                    <img src="assets/images/clip/zs-2.png" width="70%">
+                    <img data-id="img" src="assets/images/clip/zs-2.png" width="70%">
                 </section>
 
 
@@ -157,7 +157,7 @@
                     <aside class="notes">
                          Then we pass the sentence to the pre-trained text encoder (next slide)
                     </aside>
-                    <img src="assets/images/clip/zs-3.png" width="70%">
+                    <img data-id="img" src="assets/images/clip/zs-3.png" width="70%">
                 </section>
 
 
@@ -167,7 +167,7 @@
                     <aside class="notes">
                          Now, we encode an image using pre-trained image encoder and (next slide)
                     </aside>
-                    <img src="assets/images/clip/zs-4.png" width="70%">
+                    <img data-id="img" src="assets/images/clip/zs-4.png" width="70%">
                 </section>
 
 
@@ -177,7 +177,7 @@
                     <aside class="notes">
                          calculate the cosine-similarities between its features and each of text features (next slide)
                     </aside>
-                    <img src="assets/images/clip/zs-5.png" width="70%">
+                    <img data-id="img" src="assets/images/clip/zs-5.png" width="70%">
                 </section>
 
 
@@ -188,7 +188,7 @@
                     <aside class="notes">
                          label with the highest cosine-similarity will be the predicted class for the image. 
                     </aside>
-                    <img src="assets/images/clip/zs-6.png" width="70%">
+                    <img data-id="img" src="assets/images/clip/zs-6.png" width="70%">
                 </section>
 
                 <!-- ------------------- Slide ------------------- -->
