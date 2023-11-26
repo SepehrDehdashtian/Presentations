@@ -17,7 +17,7 @@
 		<div class="reveal">
 			<div class="slides">
 				<section data-auto-animate>
-					<h2>Seminar 24: CSE 842</h2>
+					<h3>Seminar 24: CSE 842</h3>
                     Sepehr Dehdashtian
 				  </section>
                   
@@ -29,29 +29,29 @@
 
                 <!-- ------------------- Slide ------------------- -->
                 <section data-auto-animate>
-                    <h2> Contrastive Learning </h2>
+                    <h3> Contrastive Learning </h3>
                     <aside class="notes">
                         This paper uses Contrastive Training which is a popular approach in self supervised learning.
                         <br>
                         In contrastive learning, the task is to match the picture and the text with each other.
                     </aside>
-                    <img src="assets/images/clip/contrastive-0.png" width="100%">                    
+                    <img src="assets/images/clip/contrastive-0.png" width="70%">                    
                 </section>
                 
                 <!-- ------------------- Slide ------------------- -->
                 <section data-auto-animate>
-                    <h2> Contrastive Learning </h2>
+                    <h3> Contrastive Learning </h3>
                     <aside class="notes">
                          For example, here we want to match these pictures of animals with their names.
                          <br> 
                          In this paper, they propose a method named CLIP that is trained based on contrastive training.
                     </aside>
-                    <img src="assets/images/clip/contrastive-1.png" width="100%">
+                    <img src="assets/images/clip/contrastive-1.png" width="70%">
                 </section>
 
                 <!-- ------------------- Slide ------------------- -->
                 <section data-auto-animate>
-                    <h2> CLIP: Contrastive Language-Image Pre-training </h2>
+                    <h3> CLIP: Contrastive Language-Image Pre-training </h3>
                     <aside class="notes">
                          CLIP is short for contrastive language-image pre-training and this is how it works: (next slide)
                     </aside>               
@@ -59,70 +59,70 @@
 
                 <!-- ------------------- Slide ------------------- -->
                 <section data-auto-animate>
-                    <h2> CLIP: Contrastive Language-Image Pre-training </h2>
+                    <h3> CLIP: Contrastive Language-Image Pre-training </h3>
                     <aside class="notes">
                          They start with stacks of training images and their corresponding captions. 
                          <br>
                          CLIP has two encoders, one for each modality.
                     </aside>
-                    <img src="assets/images/clip/clip-1.png" width="100%">
+                    <img src="assets/images/clip/clip-1.png" width="70%">
                 </section>
 
                 <!-- ------------------- Slide ------------------- -->
                 <section data-auto-animate>
-                    <h2> CLIP: Contrastive Language-Image Pre-training </h2>
+                    <h3> CLIP: Contrastive Language-Image Pre-training </h3>
                     <aside class="notes">
                          Text encoder, encodes each of the text samples into text feature vectors, and similarly (next slide)
                     </aside>
-                    <img src="assets/images/clip/clip-2.png" width="100%">
+                    <img src="assets/images/clip/clip-2.png" width="70%">
                 </section>
 
                 <!-- ------------------- Slide ------------------- -->
                 <section data-auto-animate>
-                    <h2> CLIP: Contrastive Language-Image Pre-training </h2>
+                    <h3> CLIP: Contrastive Language-Image Pre-training </h3>
                     <aside class="notes">
                          image encoder, encodes the images into image fearture vectors. (next slide)
                     </aside>
-                    <img src="assets/images/clip/clip-3.png" width="100%">
+                    <img src="assets/images/clip/clip-3.png" width="70%">
                 </section>
 
                 <!-- ------------------- Slide ------------------- -->
                 <section data-auto-animate>
-                    <h2> CLIP: Contrastive Language-Image Pre-training </h2>
+                    <h3> CLIP: Contrastive Language-Image Pre-training </h3>
                     <aside class="notes">
                          Then they calculate cosine-similarity between these image and text features and form this matrix. 
                          <br>
                          In contrastive pre-training we want the diagonal elements to have high values and the off-diagonal elements have small values.
                     </aside>
-                    <img src="assets/images/clip/clip-4.png" width="100%">
+                    <img src="assets/images/clip/clip-4.png" width="70%">
                 </section>
 
                 <!-- ------------------- Slide ------------------- -->
                 <section data-auto-animate>
-                    <h2> CLIP: Contrastive Language-Image Pre-training </h2>
+                    <h3> CLIP: Contrastive Language-Image Pre-training </h3>
                     <aside class="notes">
                          To achieve this, they pass these similarity values to a softmax classifier to calculate cross-entropy loss and update the weights of CLIP.
                          <br>
                          for example, for updating image encoder, they pass this row to a softmax classifier where the second class is the correct class. (next slide)
                     </aside>
-                    <img src="assets/images/clip/clip-5.png" width="100%">
+                    <img src="assets/images/clip/clip-5.png" width="70%">
                 </section>
 
                 <!-- ------------------- Slide ------------------- -->
                 <section data-auto-animate>
-                    <h2> CLIP: Contrastive Language-Image Pre-training </h2>
+                    <h3> CLIP: Contrastive Language-Image Pre-training </h3>
                     <aside class="notes">
                          Similarly, they can use the columns for training the text encoder.
                          <br>
                          At the end of training, CLIP will have two encoders that map image and text samples to a shared feature space. (next slide)
                     </aside>
-                    <img src="assets/images/clip/clip-6.png" width="100%">
+                    <img src="assets/images/clip/clip-6.png" width="70%">
                 </section>
 
 
                 <!-- ------------------- Slide ------------------- -->
                 <section data-auto-animate>
-                    <h2> Zero-Shot Image Classification </h2>
+                    <h3> Zero-Shot Image Classification </h3>
                     <aside class="notes">
                          A powerful application of having these two encoders is zero-shot image classification.
                     </aside>
@@ -132,67 +132,67 @@
 
                 <!-- ------------------- Slide ------------------- -->
                 <section data-auto-animate>
-                    <h2> Zero-Shot Image Classification </h2>
+                    <h3> Zero-Shot Image Classification </h3>
                     <aside class="notes">
                          Assume that we have a set of class labels, and we want to classify some images into these classes (next slide)
                     </aside>
-                    <img src="assets/images/clip/zs-1.png" width="100%">
+                    <img src="assets/images/clip/zs-1.png" width="70%">
                 </section>
 
 
                 <!-- ------------------- Slide ------------------- -->
                 <section data-auto-animate>
-                    <h2> Zero-Shot Image Classification </h2>
+                    <h3> Zero-Shot Image Classification </h3>
                     <aside class="notes">
                          We first use a template to construct a sentence for each label (next image)
                     </aside>
-                    <img src="assets/images/clip/zs-2.png" width="100%">
+                    <img src="assets/images/clip/zs-2.png" width="70%">
                 </section>
 
 
                 <!-- ------------------- Slide ------------------- -->
                 <section data-auto-animate>
-                    <h2> Zero-Shot Image Classification </h2>
+                    <h3> Zero-Shot Image Classification </h3>
                     <aside class="notes">
                          Then we pass the sentence to the pre-trained text encoder (next slide)
                     </aside>
-                    <img src="assets/images/clip/zs-3.png" width="100%">
+                    <img src="assets/images/clip/zs-3.png" width="70%">
                 </section>
 
 
                 <!-- ------------------- Slide ------------------- -->
                 <section data-auto-animate>
-                    <h2> Zero-Shot Image Classification </h2>
+                    <h3> Zero-Shot Image Classification </h3>
                     <aside class="notes">
                          Now, we encode an image using pre-trained image encoder and (next slide)
                     </aside>
-                    <img src="assets/images/clip/zs-4.png" width="100%">
+                    <img src="assets/images/clip/zs-4.png" width="70%">
                 </section>
 
 
                 <!-- ------------------- Slide ------------------- -->
                 <section data-auto-animate>
-                    <h2> Zero-Shot Image Classification </h2>
+                    <h3> Zero-Shot Image Classification </h3>
                     <aside class="notes">
                          calculate the cosine-similarities between its features and each of text features (next slide)
                     </aside>
-                    <img src="assets/images/clip/zs-5.png" width="100%">
+                    <img src="assets/images/clip/zs-5.png" width="70%">
                 </section>
 
 
 
                 <!-- ------------------- Slide ------------------- -->
                 <section data-auto-animate>
-                    <h2> Zero-Shot Image Classification </h2>
+                    <h3> Zero-Shot Image Classification </h3>
                     <aside class="notes">
                          label with the highest cosine-similarity will be the predicted class for the image. 
                     </aside>
-                    <img src="assets/images/clip/zs-6.png" width="100%">
+                    <img src="assets/images/clip/zs-6.png" width="70%">
                 </section>
 
                 <!-- ------------------- Slide ------------------- -->
                 <section data-auto-animate>
-                    <h2> Zero-Shot CLIP is much more robust </h2>
+                    <h3> Zero-Shot CLIP is much more robust </h3>
                     <aside class="notes">
                         Zero-Shot classification of CLIP is much more robust than other image classifiers trained on typical datasets. 
                     </aside>
@@ -200,19 +200,19 @@
 
                 <!-- ------------------- Slide ------------------- -->
                 <section data-auto-animate>
-                    <h2> Zero-Shot CLIP is much more robust </h2>
+                    <h3> Zero-Shot CLIP is much more robust </h3>
                     <aside class="notes">
                         Here they compared zero-shot accuracy of CLIP model with ResNet101 on different datasets. 
                         <br>
                         the results show that CLIP performs similarly well on different datasets, while ResNet struggles to classify images in some of the datasets such as ImageNet Sketch and ObjectNet.
                     </aside>
-                    <img src="assets/images/clip/robust.png" width="100%">
+                    <img src="assets/images/clip/robust.png" width="70%">
                 </section>
 
 
                 <!-- ------------------- Slide ------------------- -->
                 <section data-auto-animate>
-                    <h2> Why contrastive Learning? </h2>
+                    <h3> Why contrastive Learning? </h3>
                     <aside class="notes">
                         In the paper, to show their motivation for using contrastive training, they conducted an experiment: (next slide)
                     </aside>
@@ -220,19 +220,19 @@
 
                 <!-- ------------------- Slide ------------------- -->
                 <section data-auto-animate>
-                    <h2> Why contrastive Learning? </h2>
+                    <h3> Why contrastive Learning? </h3>
                     <aside class="notes">
                         In this figure, they show that contrastive training is much more data efficient than predictive approaches.
                         <br>
                         Here we can see that for the same zero-shot accuracy on ImageNet, CLIP model need much less data samples than other approaches.
                     </aside>
-                    <img src="assets/images/clip/efficiency.png" width="100%">
+                    <img src="assets/images/clip/efficiency.png" width="70%">
                 </section>
 
 
                 <!-- ------------------- Slide ------------------- -->
                 <section data-auto-animate>
-                    <h2> Technical Details </h2>
+                    <h3> Technical Details </h3>
                     <aside class="notes">
                     
                     </aside>
