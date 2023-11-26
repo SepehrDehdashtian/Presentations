@@ -20,18 +20,7 @@
 					<h2>Seminar 24: CSE 842</h2>
                     Sepehr Dehdashtian
 				  </section>
-                
-                <section data-auto-animate>
-                    <p class="title"> Seminar 24: CSE 842 </p>
-                    <br>
-                    <p class="subtitle"> Sepehr Dehdashtian </p>
-                    <!-- <center>Slides: hal.cse.msu.edu/talks</center> -->
-                    <!-- <center> -->
-                        <!-- <i class="fab fa-twitter"></i><a href="https://twitter.com/VishnuBoddeti">VishnuBoddeti</a> -->
-                    <!-- </center> -->
-                    <!-- <p class="author"> Sepehr Dehdashtian </p> -->
-                    <br>
-                </section>
+                  
                 <!-- ------------------- Slide ------------------- -->
                 <section data-auto-animate>
 					<h3>Learning Transferable Visual Models From Natural Language Supervision</h3>
@@ -42,21 +31,93 @@
                 <section data-auto-animate>
                     <h2> Contrastive Learning </h2>
                     <aside class="notes">
-                        This paper uses Contrastive Training which is a popular approach in the self supervised learning.
-                      </aside>
+                        This paper uses Contrastive Training which is a popular approach in self supervised learning.
+                        <br>
+                        In contrastive learning, the task is to match the picture and the text with each other.
+                    </aside>
+                    <img src="assets/images/clip/contrastive-0.png" width="100%">                    
+                </section>
                 
-                    <div class="r-stack">
-                        <img class="fragment" data-fragment-index="1" src="assets/images/contrastive-0.png" width="100%">
-                        <img class="fragment" data-fragment-index="2" src="assets/images/contrastive-1.png" width="100%">
-                    </div>
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <h2> Contrastive Learning </h2>
                     <aside class="notes">
-                        Notes2
-                      </aside>
-                
-
+                         For example, here we want to match these pictures of animals with their names.
+                         <br> 
+                         In this paper, they propose a method named CLIP that is trained based on contrastive training.
+                    </aside>
+                    <img src="assets/images/clip/contrastive-1.png" width="100%">
                 </section>
 
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <h2> CLIP: Contrastive Language-Image Pre-training </h2>
+                    <aside class="notes">
+                         CLIP is short for contrastive language-image pre-training and this is how it works: (next slide)
+                    </aside>               
+                </section>
 
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <h2> CLIP: Contrastive Language-Image Pre-training </h2>
+                    <aside class="notes">
+                         They start with stacks of training images and their corresponding captions. 
+                         <br>
+                         CLIP has two encoders, one for each modality.
+                    </aside>
+                    <img src="assets/images/clip/clip-1.png" width="100%">
+                </section>
+
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <h2> CLIP: Contrastive Language-Image Pre-training </h2>
+                    <aside class="notes">
+                         Text encoder, encodes each of the text samples into text feature vectors, and similarly (next slide)
+                    </aside>
+                    <img src="assets/images/clip/clip-2.png" width="100%">
+                </section>
+
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <h2> CLIP: Contrastive Language-Image Pre-training </h2>
+                    <aside class="notes">
+                         image encoder, encodes the images into image fearture vectors. (next slide)
+                    </aside>
+                    <img src="assets/images/clip/clip-3.png" width="100%">
+                </section>
+
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <h2> CLIP: Contrastive Language-Image Pre-training </h2>
+                    <aside class="notes">
+                         Then they calculate cosine-similarity between these image and text features and form this matrix. 
+                         <br>
+                         For contrastive pre-training we want the diagonal elements to have high values and the off-diagonal elements have small values.
+                    </aside>
+                    <img src="assets/images/clip/clip-4.png" width="100%">
+                </section>
+
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <h2> CLIP: Contrastive Language-Image Pre-training </h2>
+                    <aside class="notes">
+                         To achieve that, they pass these similarity values to a softmax classifier to calculate cross-entropy loss and update the weights of CLIP.
+                         <br>
+                         for example, for updating image encoder, they pass this row to a softmax classifier where the second class is the correct class. (next slide)
+                    </aside>
+                    <img src="assets/images/clip/clip-5.png" width="100%">
+                </section>
+
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <h2> CLIP: Contrastive Language-Image Pre-training </h2>
+                    <aside class="notes">
+                         Similarly, they can use the columns for training the text encoder.
+                         <br>
+                         At the end of training, CLIP will have two encoders that map images and texts to a shared feature space. (next slide)
+                    </aside>
+                    <img src="assets/images/clip/clip-6.png" width="100%">
+                </section>
 
 			</div>
 		</div>
