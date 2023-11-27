@@ -75,7 +75,7 @@
                     <aside class="notes">
                          They start with stacks of training images and their corresponding captions. 
                          <br>
-                         CLIP has two encoders, one for each modality.
+                         CLIP has two encoders, an image encoder and a text encoder.
                     </aside>
                     <img data-id="img" src="assets/images/clip/clip-1.png" width="70%">
                 </section>
@@ -84,7 +84,7 @@
                 <section data-auto-animate>
                     <h3> CLIP: Contrastive Language-Image Pre-training </h3>
                     <aside class="notes">
-                         Text encoder, encodes each of the text samples into text feature vectors, and similarly (next slide)
+                         Text encoder, encodes each of the text samples into text features, and similarly (next slide)
                     </aside>
                     <img data-id="img" src="assets/images/clip/clip-2.png" width="70%">
                 </section>
@@ -93,7 +93,7 @@
                 <section data-auto-animate>
                     <h3> CLIP: Contrastive Language-Image Pre-training </h3>
                     <aside class="notes">
-                         image encoder, encodes the images into image fearture vectors. (next slide)
+                         image encoder, encodes the images into image feartures. (next slide)
                     </aside>
                     <img data-id="img" src="assets/images/clip/clip-3.png" width="70%">
                 </section>
@@ -206,7 +206,9 @@
                 <section data-auto-animate>
                     <h3> Zero-Shot CLIP is robust </h3>
                     <aside class="notes">
-                        Zero-Shot classification of CLIP is much more robust than other image classifiers trained on typical datasets. 
+                        In this section of the paper they want to investigate the strengths and weaknesses of their proposed model.
+                        <br> 
+                        They start with robustness: Zero-Shot classification of CLIP is much more robust than other image classifiers trained on typical datasets. 
                     </aside>
                 </section>
 
@@ -237,6 +239,8 @@
                         In this figure, they show that contrastive training is much more data efficient than predictive approaches.
                         <br>
                         Here we can see that for the same zero-shot accuracy on ImageNet, CLIP model need much less data samples than other approaches.
+                        <br>
+                        and similarly, for a specific number of data samples, CLIP model has a higher accuracy.
                     </aside>
                     <img src="assets/images/clip/efficiency.png" width="70%">
                 </section>
@@ -246,7 +250,7 @@
                 <section data-auto-animate>
                     <h3> Technical Details </h3>
                     <aside class="notes">
-                    
+                        Here there are some implementation details of the CLIP model.
                     </aside>
 
                     <div class='left'> <b>Training</b> </div> 
@@ -277,11 +281,11 @@
                 <section data-auto-animate>
                     <h3> Zero-Shot Transfer Capabilities</h3>
                     <aside class="notes">
-                        Here they compare performance of CLIP and a fully supervised on 26 different datasets.
+                        Here they compare performance of CLIP and a fully supervised model on 26 different datasets.
                         <br>
-                        As we can see, for some general tasks like classifying foods, hate detection, car recognition, zero-shot CLIP has better performance than the supervised model.
+                        As we can see, for some general tasks like classifying foods, or hate detection, or car recognition; zero-shot CLIP has better performance than the supervised model.
                         <br>
-                        But, for domain-specific tasks such as medical imaging, or self driving, or satelite image recognition, zero-shot CLIP is much worse than the supervised model.
+                        But, for domain-specific tasks such as medical imaging, or self driving, or satelite image recognition; zero-shot CLIP is much worse than the supervised model.
                     </aside>
                     <img src="assets/images/clip/zsVSsup.png" width="50%">
                 </section>
@@ -299,7 +303,7 @@
                 <section data-auto-animate>
                     <h3> Zero-Shot CLIP vs Few-Shot Linear Probes</h3>
                     <aside class="notes">
-                        Here we can see that Zero-Shot CLIP outperforms 1, 2, 4, 8, and 16-shot of other methods and can match the performance of 4-shot CLIP Linear Prob.
+                        In this plot, the x-axis is the number of labeled training samples per class. And, y-axis is the accuracy. We can see that Zero-Shot CLIP outperforms 1, 2, 4, 8, and 16-shot of other methods and can match the performance of 4-shot CLIP Linear Prob.
                     </aside>
                     <img src="assets/images/clip/few-shot.png" width="40%">
                 </section>
@@ -309,7 +313,7 @@
                 <section data-auto-animate>
                     <h3> Prompt Engineering</h3>
                     <aside class="notes">
-                        They tried prompt engineering to improve the performance of zero-shot CLIP models.
+                        They also tried prompt engineering to improve the performance of zero-shot CLIP models.
                     </aside>
                 </section>
 
@@ -319,6 +323,8 @@
                     <h3> Prompt Engineering</h3>
                     <aside class="notes">
                         They found out that providing a more detailed sentence as the text prompt can increase the performance of zero-shot CLIP. For example, instead of using "a cat" as prompt, they used "This is a black and white photo of a cat"
+                        <br>
+                        In this plot they show that how the prompt engineering improved the accuracy of the model for the same number of floating point operations.
                     </aside>
                     <img src="assets/images/clip/prompt-eng.png" width="50%">
                 </section>
@@ -328,7 +334,7 @@
                 <section data-auto-animate>
                     <h3> Robustness to Distribution Shift</h3>
                     <aside class="notes">
-                        To show the robustness of Zero-Shot CLIP to natural distribution shift, they compared performance of CLIP and more than 200 models on imagenet and 7 imagenet-like datasets. 
+                        And Finallt, To show the robustness of Zero-Shot CLIP to natural distribution shift, they compared performance of CLIP and more than 200 models on imagenet dataset and 7 imagenet-like datasets. 
                     </aside>
                 </section>
 
@@ -337,9 +343,9 @@
                 <section data-auto-animate>
                     <h3> Robustness to Distribution Shift</h3>
                     <aside class="notes">
-                         Here x-axis is the accuracy on ImageNet and the Y-axis is the average accuracy on those 7 imagenet-Like datasets. Ideally, these two numbers are the same which will be the dashed line.
+                         Here x-axis is the accuracy on ImageNet and the Y-axis is the average accuracy on those 7 imagenet-Like datasets. Ideally, these two numbers should be the same which will be the dashed line.
                          <br>
-                         They show that Zero-Shot CLIP model is much more closer to the ideal robust model. Zero-Shot CLIP is even closer than existing robustness techniques to the ideal robust model.
+                         As we can see in this plot, Zero-Shot CLIP model is much more closer to the ideal robust model. Moreover, Zero-Shot CLIP is even closer than existing robustness techniques to the ideal robust model.
                     </aside>
                     <img src="assets/images/clip/dist-shift.png" width="40%">
                 </section>
