@@ -66,41 +66,54 @@
                     <h3> Bias in Hate Speech Detection </h3>
                     <aside class="notes">
                          </aside>
-                    <img src="assets/images/political-debiasing/bias-hatespeech.png" width="70%">                    
+                    <img src="assets/images/political-debiasing/bias-hatespeech.png" width="100%">                    
                 </section>
                 
 
                 <!-- ------------------- Slide ------------------- -->
                 <section data-auto-animate>
-                    <h3> Debiasing </h3>
+                    <h3> Debiasing Hate Speech Detection Models </h3>
                     <aside class="notes">
                          </aside>
                     <!-- <img src="assets/images/political-debiasing/.png" width="70%">                     -->
                 </section>
                 
+                
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <h3> Problem Definition </h3>
+                    <aside class="notes">
+                         </aside>
+                    <ul>
+                        <li class="fragment"> Input:  
+                            <ul>
+                                <li class="fragment"> <span style="color:yellow">$X$:</span> Sentences </li>
+                                <li class="fragment"> <span style="color:green">$Y$:</span> Target Attribute (Hate speech or not) </li>
+                                <li class="fragment"> <span style="color:red">$S$:</span> Sensitive Attribute (Political Party) </li>
+                            </ul>
+                        </li>
+                        <li class="fragment"> Output: Debiased Representation ($Z$) </li>
+                    </ul>
+                    <!-- <img src="assets/images/political-debiasing/debiasing.ong" width="100%">                     -->
+                </section>
+                
+                
+                
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <h3> Problem Definition </h3>
+                    <aside class="notes">
+                         </aside>
+                    <img src="assets/images/political-debiasing/debiasing.ong" width="100%">                    
+                </section>
+                
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <h3> Adversarial Representation Learning (ARL) </h3>
+                    <aside class="notes">
+                         </aside>
+                    <img data-id="img" src="assets/images/political-debiasing/ARL-1.png" width="80%">
 
-                <!-- ------------------- Slide ------------------- -->
-                <section data-auto-animate>
-                    <h3> Debiasing </h3>
-                    <aside class="notes">
-                         </aside>
-                    <img src="assets/images/political-debiasing/debiasing.pdf" width="80%">                    
-                </section>
-                
-                <!-- ------------------- Slide ------------------- -->
-                <section data-auto-animate>
-                    <h3> Adversarial Representation Learning (ARL) </h3>
-                    <aside class="notes">
-                         </aside>
-                    <!-- <img src="assets/images/political-debiasing/.png" width="70%">                     -->
-                </section>
-                
-                <!-- ------------------- Slide ------------------- -->
-                <section data-auto-animate>
-                    <h3> Adversarial Representation Learning (ARL) </h3>
-                    <aside class="notes">
-                         </aside>
-                    <img data-id="img" src="assets/images/political-debiasing/ARL-1.png" width="70%">                    
                 </section>
                 
                 
@@ -109,7 +122,19 @@
                     <h3> Adversarial Representation Learning (ARL) </h3>
                     <aside class="notes">
                          </aside>
-                    <img data-id="img" src="assets/images/political-debiasing/ARL-2.png" width="70%">                    
+                    <img data-id="img" src="assets/images/political-debiasing/ARL-1.png" width="80%">
+                    <p> $ \text{Loss}(X; \Theta_{Enc})  = L_T\left( f_T( Enc(X) ), Y \right) - L_A\left( f_A( Enc(X) ), S \right) $ </p>
+                    <p> $ \Theta^*_{Enc} = \text{argmin} \text{Loss}(X; \Theta_{Enc}) $ </p>
+
+                </section>
+                
+                
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <h3> Adversarial Representation Learning (ARL) </h3>
+                    <aside class="notes">
+                         </aside>
+                    <img data-id="img" src="assets/images/political-debiasing/ARL-2.png" width="80%">                    
                 </section>
                 
 
