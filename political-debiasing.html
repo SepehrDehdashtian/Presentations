@@ -87,7 +87,7 @@
                     <ul>
                         <li class="fragment"> Input 
                             <ul>
-                                <li class="fragment"> <span style="color:orange">$\hat{X}$:</span> Text Feature </li>
+                                <li class="fragment"> <span style="color:orange">$\tilde{X}$:</span> Text Feature </li>
                                 <li class="fragment"> <span style="color:green">$Y$:</span> Target Attribute (Hate speech or not) </li>
                                 <li class="fragment"> <span style="color:red">$S$:</span> Sensitive Attribute (Political Party) </li>
                             </ul>
@@ -105,7 +105,7 @@
                 
                 <!-- ------------------- Slide ------------------- -->
                 <section data-auto-animate>
-                    <h3> Problem Definition </h3>
+                    <h3> Approach </h3>
                     <aside class="notes">
                          </aside>
                     <img src="assets/images/political-debiasing/debiasing.png" width="100%">                    
@@ -138,25 +138,80 @@
                     <aside class="notes">
                     </aside>
                     <img data-id="img" src="assets/images/political-debiasing/ARL-2.png" width="60%">                    
-                    <p> $\text{Loss}(X; \Theta_{Enc}) = $<span style="color:green">$L_T\left( f_T( Enc(X) ), Y \right)$</span> <span style="color:red">$ - L_A\left( f_A( Enc(X) ), S \right)$</span></p>
+                    <p> $\text{Loss}(X; \Theta_{Enc}) = $ <span style="color:green"> $L_T\left( f_T( Enc(\tilde{X}) ), Y \right)$ </span> <span style="color:red"> $ - L_A\left( f_A( Enc(\tilde{X}) ), S \right)$</span></p>
                 </section>
                 
+
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <h3> Data </h3>
+                    <aside class="notes">
+                         </aside>
+                </section>
+                
+
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <h3> Data </h3>
+                    <aside class="notes">
+                         </aside>
+                    <ul>
+                    <li class="fragment"> Hate Speech Pre-Training 
+                        <ul>
+                            <li class="fragment"> Hate Speech Dataset: <span style="color:#ff8080">11,874</span> Sentences </li>
+                        </ul>
+                    </li>
+                    <li class="fragment"> Political Leaning 
+                        <ul>
+                            <li class="fragment"> Reddit Left: <span style="color:#ff8080"> 555,226 </span> Sentences</li>
+                            <li class="fragment"> Reddit Right: <span style="color:#ff8080"> 556,816 </span> Sentences</li>
+                        </ul>
+                    </li>
+                </ul>
+                </section>
+                
+
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <h3> Implementation Details </h3>
+                    <aside class="notes">
+                         </aside>
+                </section>
+
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <h3> Implementation Details </h3>
+                    <aside class="notes">
+                         </aside>
+
+                    <div class='left'> <b>Libraries</b> </div> 
+                    <ul>
+                        <li class="fragment"> <span style="color:gold"> Pytorch Lightning: </span> Overal Implementations </li>
+                        <li class="fragment"> <span style="color:gold"> Hugging Face: </span> Pre-Trained LLMs </li>
+                    </ul>
+                        
+                </section>
+                
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <h3>  </h3>
+                    <aside class="notes">
+                         </aside>
+
+                </section>
 
                 <!-- ------------------- Slide ------------------- -->
                 <section data-auto-animate>
                     <h3>  </h3>
                     <aside class="notes">
                          </aside>
-                    <!-- <img src="assets/images/political-debiasing/.png" width="70%">                     -->
                 </section>
-                
 
                 <!-- ------------------- Slide ------------------- -->
                 <section data-auto-animate>
                     <h3>  </h3>
                     <aside class="notes">
                          </aside>
-                    <!-- <img src="assets/images/political-debiasing/.png" width="70%">                     -->
                 </section>
                 
 
