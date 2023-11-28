@@ -85,14 +85,18 @@
                     <aside class="notes">
                          </aside>
                     <ul>
-                        <li class="fragment"> Input:  
+                        <li class="fragment"> Input 
                             <ul>
-                                <li class="fragment"> <span style="color:yellow">$X$:</span> Sentences </li>
+                                <li class="fragment"> <span style="color:orange">$\hat{X}$:</span> Text Feature </li>
                                 <li class="fragment"> <span style="color:green">$Y$:</span> Target Attribute (Hate speech or not) </li>
                                 <li class="fragment"> <span style="color:red">$S$:</span> Sensitive Attribute (Political Party) </li>
                             </ul>
                         </li>
-                        <li class="fragment"> Output: Debiased Representation ($Z$) </li>
+                        <li class="fragment"> Output
+                            <ul>
+                                <li class="fragment"> <span style="color:yellow">$Z$:</span> Debiased Representation </li>
+                            </ul>
+                        </li>
                     </ul>
                     <!-- <img src="assets/images/political-debiasing/debiasing.ong" width="100%">                     -->
                 </section>
@@ -104,7 +108,7 @@
                     <h3> Problem Definition </h3>
                     <aside class="notes">
                          </aside>
-                    <img src="assets/images/political-debiasing/debiasing.ong" width="100%">                    
+                    <img src="assets/images/political-debiasing/debiasing.png" width="100%">                    
                 </section>
                 
                 <!-- ------------------- Slide ------------------- -->
@@ -123,8 +127,8 @@
                     <aside class="notes">
                          </aside>
                     <img data-id="img" src="assets/images/political-debiasing/ARL-1.png" width="80%">
-                    <p> $ \text{Loss}(X; \Theta_{Enc})  = L_T\left( f_T( Enc(X) ), Y \right) - L_A\left( f_A( Enc(X) ), S \right) $ </p>
-                    <p> $ \Theta^*_{Enc} = \text{argmin} \text{Loss}(X; \Theta_{Enc}) $ </p>
+                    <p> $ \Theta^*_{Enc} = \text{argmin} \{ \text{Loss}(X; \Theta_{Enc})  = <span style="color:green">L_T\left( f_T( Enc(X) ), Y \right)</span> <span style="color:red"> - L_A\left( f_A( Enc(X) ), S \right)</span> \}$ </p>
+                    <!-- <p> $ \Theta^*_{Enc} = \text{argmin} \text{Loss}(X; \Theta_{Enc}) $ </p> -->
 
                 </section>
                 
