@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>CLIP</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/dracula.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-auto-animate>
+					<h3>Mitigating Political Bias in Pre-trained Large Language Models</h3>
+					<!-- <h4 style="color:yellowgreen">Seminar 24</h4> -->
+                    Sepehr Dehdashtian, Mashrur Morshed Mahmud
+                    <em>{sepehr, morshedm} @msu.edu</em>
+				  </section>
+                  
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <h3> Political Bias in Pre-Trained LLMS </h3>
+                    <aside class="notes">
+                         </aside>
+                    <img  class="fragment" src="assets/images/political-debiasing/bias-compass.png" width="70%">                    
+                </section>
+                
+
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <h3> Thank you! </h3>
+                </section>
+
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/math/math.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+                slideNumber: true,
+                notes_pointer: {
+                    pointer: {
+                        size: 15,  // in pixels (scaled like the rest of reveal.js)
+                        color: 'rgba(255, 0, 0, 0.8)',  // something valid for css background-color
+                        key: 'A'
+                    }
+                },
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ],
+                // dependencies: [
+                //     {src: 'node_modules/reveal.js-notes-pointer/notes-pointer.js', async: True}
+                // ]
+			});
+		</script>
+	</body>
+</html>
+
