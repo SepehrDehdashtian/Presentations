@@ -19,7 +19,7 @@
 				<section data-auto-animate>
 					<h3>Mitigating Political Bias in Pre-Trained Large Language Models</h3>
 					<!-- <h4 style="color:yellowgreen">Seminar 24</h4> -->
-                    Sepehr Dehdashtian, Mashrur Morshed Mahmud
+                    Sepehr Dehdashtian, Mashrur Morshed<br>
                     <em>{sepehr, morshedm} @msu.edu</em>
 				  </section>
                   
@@ -91,6 +91,7 @@
                             <li class="fragment"> <span style="color:green">$Y$:</span> Target Attribute (Hate speech or not) </li>
                             <li class="fragment"> <span style="color:red">$S$:</span> Sensitive Attribute (Political Party) </li>
                         </ul>
+                    <br><br>
                     <div class='left'> <b>  Output </b> </div>
                         <ul>
                             <li class="fragment"> <span style="color:yellow">$Z$:</span> Debiased Representation </li>
@@ -136,7 +137,7 @@
                     <aside class="notes">
                     </aside>
                     <img data-id="img" src="assets/images/political-debiasing/ARL-2.png" width="60%">                    
-                    <p> $\text{Loss}(X; \Theta_{Enc}) = $ <span style="color:green"> $L_T\left( f_T( Enc(\tilde{X}) ), Y \right)$ </span> <span style="color:red"> $ - L_A\left( f_A( Enc(\tilde{X}) ), S \right)$</span></p>
+                    <p> $\text{Loss}(\tilde{X}; \Theta_{Enc}) = $ <span style="color:green"> $L_T\left( f_T( Enc(\tilde{X}) ), Y \right)$ </span> <span style="color:red"> $ \\ - $ <span style="color:gold"> $\lambda$ </span> $ L_A\left( f_A( Enc(\tilde{X}) ), S \right)$</span></p>
                 </section>
                 
 
@@ -158,8 +159,8 @@
                         <ul>
                             <li class="fragment"><span style="color:rgb(27, 228, 111)"> Hate Speech Dataset:</span> <span style="color:#ff8080">159,872</span> Samples </li>
                         </ul>
-
-                        <div class='fragment'> <b> Political Leaning </b> </div> 
+                        <br><br>
+                        <div class='left'> <b> Political Leaning </b> </div> 
                         <ul>
                             <li class="fragment"> <span style="color:rgb(27, 228, 111)">Reddit Left:</span> <span style="color:#ff8080"> 555,226 </span> Samples</li>
                             <li class="fragment"> <span style="color:rgb(27, 228, 111)">Reddit Right:</span> <span style="color:#ff8080"> 556,816 </span> Samples</li>
@@ -191,24 +192,87 @@
                 
                 <!-- ------------------- Slide ------------------- -->
                 <section data-auto-animate>
-                    <h3>  </h3>
+                    <h3> Pre-Training Hate Speech Detector </h3>
                     <aside class="notes">
                          </aside>
+                    
+                </section>
+
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <h3> Pre-Training Hate Speech Detector </h3>
+                    <aside class="notes">
+                         </aside>
+
+                    <img data-id="img" src="assets/images/political-debiasing/hate-pretrain.png" width="80%">
+
+                    <div class='fragment'> <b>Dataset</b> </div> 
+                    <ul>
+                        <li class="fragment"> Hate Speech Dataset (Yoder et al.) </li>
+                    </ul>
+                    <br>
+                    <div class='fragment'> <b>Performance on Test</b> </div> 
+                    <ul>
+                        <li class="fragment"> Accuracy = <span style="color:rgb(27, 228, 111)"> $80\%$</span> </li>
+                    </ul>
 
                 </section>
 
                 <!-- ------------------- Slide ------------------- -->
                 <section data-auto-animate>
-                    <h3>  </h3>
+                    <h3> Debiasing </h3>
                     <aside class="notes">
                          </aside>
+                    <img data-id="img" src="assets/images/political-debiasing/fairenc.png" width="80%">
                 </section>
 
                 <!-- ------------------- Slide ------------------- -->
                 <section data-auto-animate>
-                    <h3>  </h3>
+                    <h3> Experiment </h3>
                     <aside class="notes">
                          </aside>
+                    <!-- <img data-id="img" src="assets/images/political-debiasing/results.png" width="80%"> -->
+                </section>
+                
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <h3> Evaluation Metrics </h3>
+                    <aside class="notes">
+                         </aside>
+
+                         <ul>
+                             <li class="fragment"> <span style="color:rgb(27, 228, 111)">Utility:</span> Accuracy</li>
+                             <li class="fragment"> <span style="color:rgb(27, 228, 111)">Bias:</span> Demographic Parity Violation (DPV)</li>
+                         </ul>
+                </section>
+                
+                
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <h3> Demographic Parity Violation (DPV) </h3>
+                    <aside class="notes">
+                         </aside>
+
+                </section>
+                
+                
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <h3> Demographic Parity Violation (DPV) </h3>
+                    <aside class="notes">
+                         </aside>
+
+                    \[
+                    DPV = | P(\hat{Y}= 1 | s = 0) - P(\hat{Y}=1 | s=1) |
+                    \]
+                </section>
+                
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <h3> Results </h3>
+                    <aside class="notes">
+                         </aside>
+                    <img data-id="img" src="assets/images/political-debiasing/results.png" width="80%">
                 </section>
                 
 
