@@ -20,9 +20,17 @@
 					<h3>Mitigating Political Bias in Pre-Trained Large Language Models</h3>
 					<!-- <h4 style="color:yellowgreen">Seminar 24</h4> -->
                     Sepehr Dehdashtian, Mashrur Morshed<br>
-                    <em>{sepehr, morshedm} @msu.edu</em>
+                    <!-- \[ \texttt{\{sepehr, morshedm\} @ msu.edu} \] -->
+                    <em>{sepehr, morshedm} @ msu.edu</em>
 				  </section>
                   
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <b style="color:red"> Content warning: </b>
+                    <br>
+                    <b>This article contains examples of hateful text that might be disturbing, distressing, and/or offensive.</b>   
+                </section>
+                
                 <!-- ------------------- Slide ------------------- -->
                 <section data-auto-animate>
                     <h3> Political Bias in Pre-Trained LLMs </h3>
@@ -31,6 +39,16 @@
                         </aside>                
                 </section>
                 
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <h3> Political Bias in Pre-Trained LLMs </h3>
+                    <aside class="notes">
+                    </aside>
+                    <em> Political Compass Test </em>
+                    <br>
+                    <img class="fragment" src="assets/images/political-debiasing/pub-figs.png" width="40%">                    
+                </section>
+
                 <!-- ------------------- Slide ------------------- -->
                 <section data-auto-animate>
                     <h3> Political Bias in Pre-Trained LLMs </h3>
@@ -242,7 +260,7 @@
 
                          <ul>
                              <li class="fragment"> <span style="color:rgb(27, 228, 111)">Utility:</span> Accuracy</li>
-                             <li class="fragment"> <span style="color:rgb(27, 228, 111)">Bias:</span> Demographic Parity Violation (DPV)</li>
+                             <li class="fragment"> <span style="color:#1be46f">Bias:</span> Demographic Parity Violation (DPV)</li>
                          </ul>
                 </section>
                 
@@ -260,11 +278,17 @@
                 <section data-auto-animate>
                     <h3> Demographic Parity Violation (DPV) </h3>
                     <aside class="notes">
+                        The intuition behind this criterion is that individuals should have an equal chance of being classified positively (or negatively) regardless of their demographic characteristics
                          </aside>
 
-                    \[
+                    <!-- \[
                     DPV = | P(\hat{Y}= 1 | s = 0) - P(\hat{Y}=1 | s=1) |
+                    \] -->
+                    \[
+                    DPV = | P( \textcolor{gold}{\hat{Y}= 1} | \textcolor{#ff8080}{s = 0}) - P(\textcolor{gold}{\hat{Y}= 1} | \textcolor{#ff8080}{s = 1}) |
                     \]
+                    <!-- $ DPV = | P( $ <span style="color:gold"> $ \hat{Y} = 1 $ </span> $ | $ <span style="color:#ff8080"> $s = 0$ </span>) $ - P( $ <span style="color:gold"> $ \hat{Y} = 1 $ </span> $ | $ <span style="color:#ff8080"> $s = 1$ </span>)$ | $ -->
+                    
                 </section>
                 
                 <!-- ------------------- Slide ------------------- -->
@@ -275,6 +299,39 @@
                     <img data-id="img" src="assets/images/political-debiasing/results.png" width="80%">
                 </section>
                 
+
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <h3> Qualitative Evaluation </h3>
+                </section>
+
+
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <h3> Qualitative Evaluation </h3>
+                    <em>"I havn't studied a lick of marxist theory but let me tell you, those communists don't know anything!"</em>
+                    <p class="fragment"> Biased Prediction &#8594 <span style="color:#ff8080"> Hate Speech </span> </p>
+                    <p class="fragment"> Unbiased Prediction &#8594 <span style="color:rgb(27, 228, 111)"> Not Hate Speech </span> </p>
+                </section>
+
+
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <h3> Qualitative Evaluation </h3>
+                    <em>"I'm surprised the leftist media isn't blaming it on white supremacy"</em>
+                    <p class="fragment"> Biased Prediction &#8594 <span style="color:#ff8080"> Hate Speech </span> </p>
+                    <p class="fragment"> Unbiased Prediction &#8594 <span style="color:rgb(27, 228, 111)"> Not Hate Speech </span> </p>
+                </section>
+
+
+
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <h3> Qualitative Evaluation </h3>
+                    <em>"I agree with your assessment of Trump, but saying you "have" to be stupid to support him isn't fair. There's plenty of intelligence and stupidity to go around."</em>
+                    <p class="fragment"> Biased Prediction &#8594 <span style="color:#ff8080"> Hate Speech </span> </p>
+                    <p class="fragment"> Unbiased Prediction &#8594 <span style="color:rgb(27, 228, 111)"> Not Hate Speech </span> </p>
+                </section>
 
                 <!-- ------------------- Slide ------------------- -->
                 <section data-auto-animate>
