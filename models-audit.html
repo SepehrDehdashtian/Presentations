@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Model Audit</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/dracula.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-auto-animate>
+					<h3>On Hate Scaling Laws For Data-Swamps</h3>
+					<h4 style="color:yellowgreen">Second Part</h4>
+                    <!-- Sepehr Dehdashtian, Lan Wang, Vishnu Narresh Boddeti<br> -->
+                    <!-- \[ \texttt{\{sepehr, morshedm\} @ msu.edu} \] -->
+                    <!-- <em>{sepehr, wanglan3, vishnu} @ msu.edu</em> -->
+				  </section>
+                  
+                
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <h3> Models </h3>
+					<p class="fragment"> 120 Pre-trained CLIP models</p>
+					<img class="fragment" src="assets/images/model-audit/openCLIP.png"> 
+                    <aside class="notes">
+					
+                        </aside>                
+                </section>
+
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <h3> Pre-Training Datasets </h3>
+					<ul>
+						<li class="fragment"> LAION 400M </li>
+						<li class="fragment"> LAION 2B </li>
+						<li class="fragment"> OpenAI WIT </li>
+						<li class="fragment"> CommonPool </li>
+						<li class="fragment"> DataComp </li>
+						<li class="fragment"> ... </li>
+					</ul>
+                    <aside class="notes">
+                    </aside>
+                    
+                </section>
+
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <h3> Evaluation Datasets </h3>
+                    <aside class="notes">     
+                    </aside>
+					<!-- <h4 class="fragment"> CFD </h4>  -->
+					<ul>
+						<li class="fragment"> CFD </li>
+						<li class="fragment"> FairFace </li>
+						<li class="fragment"> FACET </li>
+						<li class="fragment"> CelebSET </li>
+					</ul>
+                    <!-- <img class="fragment" src="assets/images/political-debiasing/bias-compass.png" width="70%">                     -->
+                </section>
+                
+                
+
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <h3> Analysis </h3>
+					<ul>
+						<li class="fragment"> Heatmaps </li>
+						<img class="fragment" src="assets/images/model-audit/heatmap.png" width="60%"> 
+						<!-- <li class="fragment">  </li> -->
+					</ul>
+                </section>
+
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <h3> Analysis </h3>
+					<ul>
+						<li class="fragment"> Hate vs. ImageNet Accuracy </li>
+						<img class="fragment" src="assets/images/model-audit/plotVSimagenet.jpeg" width="50%"> 
+						<!-- <li class="fragment">  </li> -->
+					</ul>
+                </section>
+
+
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <h3> Analysis </h3>
+					<ul>
+						<li class="fragment"> Acc vs. Hate </li>
+						<img class="fragment" src="assets/images/model-audit/accVshate0.png" width="65%"> 
+						<img class="fragment" src="assets/images/model-audit/accVshate1.png" width="65%"> 
+						<!-- <li class="fragment">  </li> -->
+					</ul>
+                </section>
+
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/math/math.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+                slideNumber: true,
+                notes_pointer: {
+                    pointer: {
+                        size: 15,  // in pixels (scaled like the rest of reveal.js)
+                        color: 'rgba(255, 0, 0, 0.8)',  // something valid for css background-color
+                        key: 'A'
+                    }
+                },
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ],
+                // dependencies: [
+                //     {src: 'node_modules/reveal.js-notes-pointer/notes-pointer.js', async: True}
+                // ]
+			});
+		</script>
+	</body>
+</html>
+
